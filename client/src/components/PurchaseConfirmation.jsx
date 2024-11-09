@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { FaHeart } from "react-icons/fa";
 import { FaCheckCircle } from "react-icons/fa";
 import { ProductContext } from '../Context/ProductContext';
@@ -12,40 +12,50 @@ import { TbShoppingCartDiscount } from "react-icons/tb";
 import logo2 from '../assets/img/logo2.png'
 import { AuthContext } from '../Context/AuthContext';
 import NavBarè from './NavBarè';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 
 const PurchaseConfirmation = ({quantity}) => {
-  const {user}=useContext(AuthContext);
+
+  const {user,dispatch}=useContext(AuthContext);
+  const {product,productDispatch,productListDispatch}=useContext(ProductContext);
+  const [Error,setError]=useState('')
+  const navigate=useNavigate();
+
   const ConfirmPurchase=()=>{
-    console.log(user.balance)
-    if(quantity*product.price<=user.balance){
-      axios
-      .post('http://localhost:5555/purchase', { productId: product._id, ...user, quantityP:quantity, Total:quantity*product.price })
-      .then((response) => {
-  console.log(response.data.purchaseCreate.PurchaseDate)
-  console.log(response.data.newBalance.name)
-        
-        dispatch({ type: 'incrementBalance', payload: { balance: response.data.newBalance.balance } })
-        localStorage.setItem('user', JSON.stringify({ ...user, balance: user.balance - Total }))
-        productListDispatch({ type: 'updateOne', payload: { product, quantity: quantityP } })
-        productDispatch({ payload: null })
-        setBuy(false)
-      })
-      .catch(() => {
-        
-      })
-    }
-    else{
-       setErorr('Your balance is insufficient')
-    }
+    
+    
+      const Total=quantity*product.price;
+if(Total<=user.balance){
+  console.log('first')
+  axios
+  .post('http://localhost:5555/purchase', { productId: product._id, ...user, quantityP:quantity, Total:quantity*product.price })
+  .then((response) => {
+console.log(response.data.newBalance.balance)
+    
+    dispatch({ type: 'incrementBalance', payload: { balance: response.data.newBalance.balance } })
+    localStorage.setItem('user', JSON.stringify({ ...user, balance: user.balance - Total }))
+    productListDispatch({ type: 'updateOne', payload: { product, quantity: quantity } })
+    productDispatch({ payload: null })
+    navigate('/')
+  })
+  .catch(() => {
+    
+  })
+
+}else{
+  setError('you can not buy , your balance is Not enough')
+
+}
+     
+    
    
   }
-    const {product}=useContext(ProductContext);
-    useEffect(()=>{console.log(product)},[product])
   return (
     <div className={`h-screen w-full flex flex-col justify-center items-center `}>
       <NavBarè/>
+      {user.balance}
              <div className='w-[48%] rounded-xl bg-yellow-100 pb-5 mt-3'>
                  <div className="w-full px-4 py-3 flex gap-x-3 justify-between items-center rounded-tl-xl rounded-tr-xl bg-blue-600 ">
                     <FaHeart className='text-orange-600 text-5xl'/>

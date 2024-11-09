@@ -14,7 +14,7 @@ export const authReducer=(state,action)=> {
             return {user:null}
 
             case 'incrementBalance':
-              return {...state,user:{... state.user ,balance : action.payload.balance}}
+              return {...state,user:{...state.user ,balance : action.payload.balance}}
             default: 
               return state
      }

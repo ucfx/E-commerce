@@ -47,6 +47,8 @@ console.log(error)
         <div className="flex  flex-col justify-center items-center px-4 py-7 bg-gray-50 rounded-xl relative ">
           <img src={productList[index*8+i].imgUrl} className="w-[120px] h-[120px]" alt="" />
           <CiHeart className="text-lg absolute top-3 right-5"/>
+          <p className="text-lg absolute top-3 left-5">{productList[index*8+i].quantity} copy</p>
+
         </div>
         <div className="w-full flex flex-col justify-start items-start pl-2">
           <div className="flex justify-between items-center w-full pr-3 pb-2">

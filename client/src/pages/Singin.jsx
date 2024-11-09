@@ -34,7 +34,7 @@ e.preventDefault()
       if(response.data.isAdmin){
              navigate('/admin')
       }else{
-        navigate('/Buy')
+        navigate('/')
 
       }
     })

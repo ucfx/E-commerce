@@ -36,9 +36,10 @@ import PurchaseConfirmation from "../components/PurchaseConfirmation";
 import { AccountContext } from '../Context/UserAccountContext';
 const NavBarè = () => {
     const [item, setItem] = useState(0);
-    const {user,Dispatch}=useContext(AuthContext)
+    const {user,dispatch}=useContext(AuthContext)
     const {product,productDispatch}=useContext(ProductContext)
     const {AccountView,AccountDispatch}=useContext(AccountContext);
+    
 
 
 
@@ -120,8 +121,9 @@ const NavBarè = () => {
               />
               <IoSearchOutline className="text-gray-600" />
             </div>
-            <div className="flex justify-between items-center px-3 gap-x-5">
-              <Link onClick={()=>{AccountDispatch({payload:{value:'Account'}})}} to={'/userAccount'}  className="flex justify-center items-center gap-x-2 cursor-pointer group">
+           
+              {user !=null ?<div className=' flex justify-between items-center px-3 gap-x-5'>
+                <Link onClick={()=>{AccountDispatch({payload:{value:'Account'}})}} to={'/userAccount'}  className="flex justify-center items-center gap-x-2 cursor-pointer group">
                 <VscAccount className="group-hover:text-orange-700 group-hover:font-semibold" />
                 <p className="group-hover:text-orange-700 group-hover:font-semibold">
                   Account
@@ -139,7 +141,22 @@ const NavBarè = () => {
                   Purchases
                 </p>
               </Link>
-            </div>
+              </div>:<div className=' flex justify-between items-center px-3 gap-x-5'>
+              <Link  to={'/Singup'} className="flex justify-center items-center gap-x-2 cursor-pointer group">
+                <FiShoppingCart className="group-hover:text-orange-700 group-hover:font-semibold" />
+                <p className="group-hover:text-orange-700 group-hover:font-semibold">
+                  Sign Up
+                </p>
+              </Link>
+              <Link  to={'/Singin'} className="flex justify-center items-center gap-x-2 cursor-pointer group">
+                <BiPurchaseTag className="group-hover:text-orange-700 group-hover:font-semibold" />
+                <p className="group-hover:text-orange-700 group-hover:font-semibold">
+                  Log in
+                </p>
+              </Link>
+                </div>}
+             
+         
           </div>
     </div>
   )

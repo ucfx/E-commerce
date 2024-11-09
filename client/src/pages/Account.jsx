@@ -69,7 +69,6 @@ const [error,setErorr]=useState('')
       setQuantiy(quantity+1)
     }
   }
- 
   useEffect(() => {
     if(product !=null){
       const productType = productContext.filter(
@@ -103,6 +102,8 @@ const [error,setErorr]=useState('')
       {product == null ? (
         <div>
          <NavBarè/>
+         <button onClick={()=>{dispatch({type:'LOGOUT'})}}>LOGOUT</button>
+         {user!=null?<p>{user.balance}</p>:''}
           <div className="w-full px-10 pt-3 ">
             <div className="w-full   bg-gray-100 pr-10 pl-20 relative ">
               <div className="w-[95%]  flex justify-between items-center">
@@ -340,102 +341,7 @@ const [error,setErorr]=useState('')
         </div>
       ) : (
         !confirm ?<div>
-          <div className="w-full py-1 px-10 bg-blue-800 flex justify-between items-center ">
-            <div className="flex justify-start items-center gap-x-2">
-              <FaPhone className="text-white text-md" />
-              <p className="text-white text-md">+213 656149785</p>
-            </div>
-            <div className="flex justify-between items-center gap-x-5">
-              <p className="text-white text-md ">Get 50% of selected items</p>
-              <p className="text-white text-md ">|</p>
-              <p className="text-white text-md ">Shop Now</p>
-            </div>
-            <div className="flex justify-between items-center gap-x-10">
-              <div className="flex justify-start items-center gap-x-2">
-                <p className="text-white text-md">Eng </p>
-                <FaAngleDown className="text-md text-white" />
-              </div>
-              <div className="flex justify-start items-center gap-x-2">
-                <p className="text-white text-md">Location </p>
-                <FaAngleDown className="text-md text-white" />
-              </div>
-            </div>
-          </div>
-          <div className="flex justify-between items-center w-full px-10     ">
-            <div className="flex justify-start items-center gap-x-1 " onClick={()=>{productDispatch({payload:null})}}>
-              <img src={Logo} alt="" className="w-[65px] h-[65px] " />
-              <Link
-                to={"/"}
-                className="font-fontAY2 font-bold text-lg text-blue-800 "
-              >
-                {" "}
-                AY-<span className="text-orange-700">STORE</span>
-              </Link>
-            </div>
-            <div className="flex justify-start items-center gap-x-10 px-4 ">
-              <p
-                onClick={() => {
-                  setItem(2);
-                }}
-                className={`cursor-pointer hover:font-semibold  ${
-                  item == 2 ? "text-orange-700 font-semibold" : "text-black"
-                }`}
-              >
-                Deals
-              </p>
-              <p
-                onClick={() => {
-                  setItem(3);
-                }}
-                className={`cursor-pointer hover:font-semibold  ${
-                  item == 3 ? "text-orange-700 font-semibold" : "text-black"
-                } `}
-              >
-                Dilivery
-              </p>
-              <a
-                onClick={() => {
-                  setItem(4);
-                  productDispatch({payload:null})
-                }}
-                href="#contacts"
-                
-                className={`cursor-pointer hover:font-semibold ${
-                  item == 4 ? "text-orange-700 font-semibold" : "text-black"
-                } `}
-              >
-                Contact us
-              </a>
-            </div>
-            <div className=" flex justify-between items-center rounded-xl bg-gray-200 px-2 py-1 gap-x-5">
-              <input
-                type="text"
-                className="rounded-lg px-2 border-none bg-transparent text-gray-600"
-                placeholder="search"
-              />
-              <IoSearchOutline className="text-gray-600" />
-            </div>
-            <div className="flex justify-between items-center px-3 gap-x-5">
-              <div className="flex justify-center items-center gap-x-2 cursor-pointer group">
-                <VscAccount className="group-hover:text-orange-700 group-hover:font-semibold" />
-                <p className="group-hover:text-orange-700 group-hover:font-semibold">
-                  Account
-                </p>
-              </div>
-              <div className="flex justify-center items-center gap-x-2 cursor-pointer group">
-                <FiShoppingCart className="group-hover:text-orange-700 group-hover:font-semibold" />
-                <p className="group-hover:text-orange-700 group-hover:font-semibold">
-                  Cart
-                </p>
-              </div>
-              <div className="flex justify-center items-center gap-x-2 cursor-pointer group">
-                <BiPurchaseTag className="group-hover:text-orange-700 group-hover:font-semibold" />
-                <p className="group-hover:text-orange-700 group-hover:font-semibold">
-                  Purchases
-                </p>
-              </div>
-            </div>
-          </div>
+          <NavBarè/>
           <div className="px-10 w-full pt-3">
             <p className="text-md text-gray-600 ">
               Electronics / {product.productType} /{" "}

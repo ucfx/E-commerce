@@ -13,7 +13,7 @@ import { MdOutlineNotifications } from "react-icons/md";
 import { AuthContext } from "../Context/AuthContext";
 import products from '../assets/img/products.png' 
 import { BsGraphDownArrow } from "react-icons/bs";
-
+import { Link } from "react-router-dom";
 
 export const UserAccount = () => {
   const { AccountView, AccountDispatch } = useContext(AccountContext);
@@ -67,17 +67,17 @@ export const UserAccount = () => {
   return (
     <div className="flex justify-start items-start">
       <div className="h-screen pt-4 w-1/6 rounded-br-lg rounded-tr-lg  flex flex-col justify-start items-center gap-y-5 ">
-        <div className="flex justify-start items-center mx-auto">
+        <Link to={"/"}
+            className="flex justify-start items-center mx-auto">
           <img src={Logo2} className="h-[60px] w-[60px] " alt="" />
           <p
-            to={"/"}
-           
+            
             className="font-fontAY2 font-bold text-lg  text-blue-800 "
           >
             {" "}
             AY-<span className="text-orange-700">STORE</span>
           </p>
-        </div>
+        </Link>
         <div className="w-3/4 mx-auto flex justify-center  items-center gap-x-3">
             <div className="flex flex-col justify-start items-start font-semibold text-violet-800">
                 <p>Make New</p>
