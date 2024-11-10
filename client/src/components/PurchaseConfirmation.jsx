@@ -55,7 +55,7 @@ console.log(response.data.newBalance.balance)
   return (
     <div className={`h-screen w-full flex flex-col justify-center items-center `}>
       <NavBarè/>
-      {user.balance}
+   
              <div className='w-[48%] rounded-xl bg-yellow-100 pb-5 mt-3'>
                  <div className="w-full px-4 py-3 flex gap-x-3 justify-between items-center rounded-tl-xl rounded-tr-xl bg-blue-600 ">
                     <FaHeart className='text-orange-600 text-5xl'/>

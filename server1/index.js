@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import productRoutes from "./routes/productRoutes.js";
 import userRouter from "./routes/userRouter.js";
 import PurchaseRoute from "./routes/PurchaseRoute.js";
+import chatRoutes from './routes/chatRoutes.js'
 import { user } from "./Models/UserModel.js";
 import cartRoutes from "./routes/cartRoutes.js"
 import cors from "cors"
@@ -23,6 +24,8 @@ app.get('/',(request,response)=>{
 
 
 app.use('/product',productRoutes)
+app.use('/chat',chatRoutes);
+
 app.use('/user',userRouter)
 app.use('/purchase',PurchaseRoute)
 app.use('/cart',cartRoutes)

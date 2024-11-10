@@ -18,6 +18,7 @@ import Account from "./pages/Account.jsx";
 import Contact from "./components/Contact.jsx";
 import Contacts from "./components/Contacts.jsx";
 import { UserAccount } from "./pages/userAccount.jsx";
+import ChatPage from "./pages/ChatPages.jsx/ChatPage.jsx";
 const App = () => {
 
   const { product, productDispatch,productContext,productListDispatch }=useContext(ProductContext);
@@ -40,7 +41,7 @@ console.log(error)
  <Routes>
    <Route path="/" element={<Account />}/>
    <Route path="/userAccount" element={<UserAccount />}/>
-
+   <Route path="/chat" element={<ChatPage />}/>
    <Route path="/Contact/:itemP" element={<Contacts />}/>
    <Route path="/test" element={<Test />}/>
    <Route path="/admin" element={<AdminDashboard />}/>

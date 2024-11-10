@@ -1,0 +1,26 @@
+.scrollbar-custom {
+    overflow: auto;
+  }
+  
+  .scrollbar-custom::-webkit-scrollbar {
+    width: 8px; /* Scrollbar width */
+  }
+  
+  .scrollbar-custom::-webkit-scrollbar-track {
+    background: #e5e7eb; /* Tailwind gray-200 */
+  }
+  
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+    background: #3b82f6; /* Tailwind blue-500 */
+    border-radius: 8px;
+  }
+  
+  .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+    background: #3e3f3f; /* Tailwind blue-600 */
+  }
+  
+  /* Firefox scrollbar styles */
+  .scrollbar-custom {
+    scrollbar-width: thin;
+    scrollbar-color: #FFFFFF #111827;
+  }

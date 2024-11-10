@@ -8,6 +8,7 @@ import { FaAngleDown } from "react-icons/fa6";
 import { IoGift, IoSearchOutline } from "react-icons/io5";
 import { FaPhone } from "react-icons/fa";
 import { LuFileDown } from "react-icons/lu";
+import { IoChatbubbleEllipsesSharp } from "react-icons/io5";
 
 import { VscAccount } from "react-icons/vsc";
 import { FiShoppingCart } from "react-icons/fi";
@@ -141,6 +142,12 @@ const NavBarè = () => {
                   Purchases
                 </p>
               </Link>
+              <Link  to={'/chat'}  className="flex justify-center items-center gap-x-2 cursor-pointer group">
+                <IoChatbubbleEllipsesSharp className="group-hover:text-orange-700 group-hover:font-semibold" />
+                <p className="group-hover:text-orange-700 group-hover:font-semibold">
+                  Chat
+                </p>
+              </Link>
               </div>:<div className=' flex justify-between items-center px-3 gap-x-5'>
               <Link  to={'/Singup'} className="flex justify-center items-center gap-x-2 cursor-pointer group">
                 <FiShoppingCart className="group-hover:text-orange-700 group-hover:font-semibold" />
@@ -154,6 +161,7 @@ const NavBarè = () => {
                   Log in
                 </p>
               </Link>
+             
                 </div>}
              
          

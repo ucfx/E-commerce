@@ -3,7 +3,7 @@ import Logo from "../assets/img/Logo.png";
 import { useContext } from "react";
 import { AuthContext } from "../Context/AuthContext";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaAngleDown } from "react-icons/fa6";
 import { IoGift, IoSearchOutline } from "react-icons/io5";
 import { FaPhone } from "react-icons/fa";
@@ -43,8 +43,25 @@ const Account = () => {
   const [productWithSameType, setProductWithSameType] = useState([]);
   const [quantity,setQuantiy]=useState(1)
   const [item, setItem] = useState(0);
+  const navigate=useNavigate()
 const [error,setErorr]=useState('')
- 
+ const goToConfirm=()=>{
+  if(user!=null){
+    setConfirm(true)
+  }else{
+    navigate('/Singin')
+  }
+ }
+
+ const goToAddToCart=()=>{
+  if(user!=null){
+    addToCart(product._id)
+  }else{
+    navigate('/Singin')
+  }
+ }
+
+ useEffect(()=>{console.log(product)},[product])
 
   const addToCart=(id)=>{
     axios
@@ -381,8 +398,8 @@ const [error,setErorr]=useState('')
                 </div>
 
                 <div className=" pt-5 flex justify-start items-center gap-x-5 ">
-                  <button onClick={()=>{setConfirm(true)}} className="hover:bg-gray-800 hover:border-gray-800  border border-orange-600 px-6 py-2 bg-orange-600 text-white  font-semibold ">Buy Now</button>
-                  <button onClick={()=>{addToCart(product._id)}} className=" hover:text-white hover:bg-green-800 hover:border-green-800  px-6 py-2 bg-white text-black border border-black  font-semibold ">Add to Cart</button>
+                  <button onClick={goToConfirm} className="hover:bg-gray-800 hover:border-gray-800  border border-orange-600 px-6 py-2 bg-orange-600 text-white  font-semibold ">Buy Now</button>
+                  <button onClick={goToAddToCart} className=" hover:text-white hover:bg-green-800 hover:border-green-800  px-6 py-2 bg-white text-black border border-black  font-semibold ">Add to Cart</button>
                 </div>
 
                 <div>
