@@ -8,6 +8,7 @@ import { FaAngleDown } from "react-icons/fa6";
 import { IoGift, IoSearchOutline } from "react-icons/io5";
 import { FaPhone } from "react-icons/fa";
 import { LuFileDown } from "react-icons/lu";
+import { CiLogout } from "react-icons/ci";
 
 import { VscAccount } from "react-icons/vsc";
 import { FiShoppingCart } from "react-icons/fi";
@@ -119,8 +120,8 @@ const [error,setErorr]=useState('')
       {product == null ? (
         <div>
          <NavBarè/>
-         <button onClick={()=>{dispatch({type:'LOGOUT'})}}>LOGOUT</button>
-         {user!=null?<p>{user.balance}</p>:''}
+     
+         
           <div className="w-full px-10 pt-3 ">
             <div className="w-full   bg-gray-100 pr-10 pl-20 relative ">
               <div className="w-[95%]  flex justify-between items-center">

@@ -9,6 +9,7 @@ import { IoGift, IoSearchOutline } from "react-icons/io5";
 import { FaPhone } from "react-icons/fa";
 import { LuFileDown } from "react-icons/lu";
 import { IoChatbubbleEllipsesSharp } from "react-icons/io5";
+import { CiLogout } from "react-icons/ci";
 
 import { VscAccount } from "react-icons/vsc";
 import { FiShoppingCart } from "react-icons/fi";
@@ -146,6 +147,12 @@ const NavBarè = () => {
                 <IoChatbubbleEllipsesSharp className="group-hover:text-orange-700 group-hover:font-semibold" />
                 <p className="group-hover:text-orange-700 group-hover:font-semibold">
                   Chat
+                </p>
+              </Link>
+              <Link  onClick={()=>{dispatch({type:'LOGOUT'})}}  className="flex justify-center items-center gap-x-2 cursor-pointer group">
+                <CiLogout className="group-hover:text-orange-700 group-hover:font-semibold" />
+                <p className="group-hover:text-orange-700 group-hover:font-semibold">
+                  Logout
                 </p>
               </Link>
               </div>:<div className=' flex justify-between items-center px-3 gap-x-5'>

@@ -30,19 +30,21 @@ const [serchedUsers,setSerchedUsers]=useState(null)
     
 
 
-    const displayUsersF=userDisplayed.map((user,index)=>{
-       
-           if(user._id==selectedUser){
+    const displayUsersF=userDisplayed.map((userM,index)=>{
+           
+           if(userM._id==selectedUser){
+             
             return ''
            }else{
-            if(user.isVerified){
-                return <div onClick={()=>{setSelectedUser(user._id);changeSelectedUser(user._id)}} key={index} className='cursor-pointer flex justify-start items-center gap-x-2'>
+            if(userM.isVerified && user.userId!=userM._id ){
+             
+                return <div onClick={()=>{setSelectedUser(userM._id);changeSelectedUser(userM._id)}} key={index} className='cursor-pointer flex justify-start items-center gap-x-2'>
                 <div className= {`flex flex-col justify-center items-center rounded-full py-2 px-2 bg-white `}>
                       <FaUser className='text-gray-900' />
                 </div>
                 <div className='flex flex-col justify-start items-start'>
-                    <p className='text-white text-md font-semibold'>{user.name}</p>
-                    <p className='text-gray-500 text-sm font-semibold'>Send mesage to {user.name}</p>
+                    <p className='text-white text-md font-semibold'>{userM.name}</p>
+                    <p className='text-gray-500 text-sm font-semibold'>Send mesage to {userM.name}</p>
     
                 </div>
           </div>
@@ -57,7 +59,7 @@ const [serchedUsers,setSerchedUsers]=useState(null)
     })
     const displaySelectedUser=users.map((user,index)=>{
        if(user._id==selectedUser){
-        return  <div className='cursor-pointer flex justify-start items-center gap-x-2'>
+        return  <div key={user._id} className='cursor-pointer flex justify-start items-center gap-x-2'>
             
         <div className= {`flex flex-col justify-center items-center rounded-full py-2 px-2 bg-white border-[3px] border-blue-500`}>
                          <FaUser className='text-gray-900' />
@@ -78,7 +80,7 @@ const [serchedUsers,setSerchedUsers]=useState(null)
     
   return (
     <div className='h-screen w-[23%] bg-gray-900  pt-[20px] pl-[20px] '>
-        <Link to={'/'} className='flex justify-start items-center gap-x-1 left-2 top-1 pb-10'>
+        <Link to={'/'} className='flex justify-start items-center gap-x-1 left-2 top-1 pb-10 w-full mx-auto'>
            <img src={Logo} className=" w-[65px] h-[65px]"/>
            <Link  src={Logo} className="text-xl text-white font-semibold  ">AY-STORE</Link>
         </Link>
